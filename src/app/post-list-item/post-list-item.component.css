@@ -1,0 +1,9 @@
+.titre{
+	font-size: 30px;
+	font-weight: bold;
+}
+.date{
+	font-size: 22px;
+	float: right;
+	color: #686E6D;
+}
