@@ -3,6 +3,10 @@
                 'list-group-item-danger': post.loveIts <0}">
  <p ><span class="titre">{{ post.title }}</span><span class="date">{{post.created_at | date: 'short'}}</span></p>
    <p>{{post.content}}</p>
-   <button class="btn btn-success" (click)="onIncremente()" >Love It</button>
-  <button class="btn btn-danger" (click)="onDecrimente()">Don't Love It</button>
+   <button class="btn btn-success" (click)="onIncerementeLoveIt()" >Love It <span class="glyphicon glyphicon-thumbs-up"></span></button>
+  <button class="btn btn-danger" (click)="OnDecrimenteLoveIt()">Don't Love It <span class="glyphicon glyphicon-thumbs-down"></span></button>
+    <button class="btn btn-danger pull-right" (click)="onDeletePost(post)">Supprimer post
+      <span class="glyphicon glyphicon-remove" ></span>
+
+    </button>
 </li>

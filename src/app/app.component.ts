@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Post } from './post-list-item/Post';
+import { Component, OnInit } from '@angular/core';
+import { PostService } from './service/post.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +8,21 @@ import { Post } from './post-list-item/Post';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  posts = [
-    new Post('Mon premier post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      -3)
-    ,
-    
-      new Post('Mon deuxième post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      5)
-    ,
-    new Post('Mon troisième post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-     16)
-  ];
+export class AppComponent implements OnInit {
 
+  constructor(private postservice: PostService) {
+    const config = {
+      apiKey: 'AIzaSyD6kFVOJ6dGMvFYN6ruewn8kdkbHsb3hyA',
+      authDomain: 'postsop-6130b.firebaseapp.com',
+      databaseURL: 'https://postsop-6130b.firebaseio.com',
+      projectId: 'ostsop-6130b',
+      storageBucket: 'postsop-6130b.appspot.com',
+      messagingSenderId: '256412030680'
+    };
+    firebase.initializeApp(config);
+
+  }
+ngOnInit() {
+  this.postservice.getPosts();
+}
 }
